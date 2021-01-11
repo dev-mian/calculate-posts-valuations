@@ -60,19 +60,20 @@ class Post
     private function evaluateRepeatedWord($word, $posts)
     {
         $value = 0;
+        $word = strtolower($word);
 
         foreach($posts as $post) {
             $titleWords = explode(' ', $post['title']);
             $bodyWords = explode(' ', $post['body']);
 
             foreach($titleWords as $titleWord) {
-                if( $word == $titleWord ) {
+                if( $word == strtolower($titleWord) ) {
                     $value += 2;
                 }
             }
     
             foreach($bodyWords as $bodyWord) {
-                if( $word == $bodyWord ) {
+                if( $word == strtolower($bodyWord) ) {
                     $value += 1;
                 }
             }
